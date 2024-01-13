@@ -16,7 +16,7 @@ function App() {
     if (urls.length < 2) return "1fr";
     if (urls.length < 5) return "1fr 1fr";
     if (urls.length < 10) return "1fr 1fr 1fr";
-    else "1fr 1fr 1fr 1fr";
+    return "1fr 1fr 1fr 1fr";
   }, [urls]);
 
   return (
