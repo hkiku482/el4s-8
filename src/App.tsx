@@ -45,7 +45,7 @@ function App() {
                     playlist: `${vid}`,
                     playsinline: 1,
                     autoplay: 1,
-                    mute: 1,
+                    mute: 0,
                     loop: 1,
                   },
                   width: `100%`,
