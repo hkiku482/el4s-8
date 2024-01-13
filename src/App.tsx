@@ -43,10 +43,12 @@ function App() {
                 key={data.id}
                 videoId={vid}
                 opts={{
-                  playsinline: 1,
-                  autoplay: 0,
-                  mute: 1,
-                  loop: 1,
+                  playerVars: {
+                    playsinline: 1,
+                    autoplay: 1,
+                    mute: 1,
+                    loop: 1,
+                  },
                   width: `100%`,
                   height: `100%`,
                 }}
