@@ -1,4 +1,4 @@
-import { ActionIcon, AppShell, Box, Text } from "@mantine/core";
+import { ActionIcon, AppShell, Box, Text, Group } from "@mantine/core";
 import YouTube from "react-youtube";
 import { IconSettings } from "@tabler/icons-react";
 import { ConfigModal } from "./components/features/Config";
@@ -22,11 +22,13 @@ function App() {
   return (
     <AppShell header={{ height: 60 }}>
       <AppShell.Header>
-        <Box>
-          <ActionIcon onClick={open}>
-            <IconSettings />
-          </ActionIcon>
-          <Text size="sm">YouTube複窓ツール</Text>
+        <Box p="sm">
+          <Group>
+            <ActionIcon onClick={open}>
+              <IconSettings />
+            </ActionIcon>
+            <Text size="sm">YouTube複窓ツール</Text>
+          </Group>
         </Box>
       </AppShell.Header>
       <AppShell.Main>
@@ -35,7 +37,7 @@ function App() {
           style={{ display: "grid", gridTemplateColumns: gridTemplateColumns }}
         >
           {urls.map((url, index) => {
-            const vid = url.split("watch?v=")[1];
+            const vid = url.split("watch?v=")[1].split("&s=")[0];
             return (
               <YouTube
                 key={index}
