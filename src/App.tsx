@@ -7,8 +7,6 @@ import { useAppState } from "./components/features/AppStateContext";
 import { useDisclosure } from "@mantine/hooks";
 
 function App() {
-  // const { ref, width, height } = useElementSize();
-
   const [opened, { close, open }] = useDisclosure();
   const { urls } = useAppState();
 
@@ -27,7 +25,7 @@ function App() {
             <ActionIcon onClick={open}>
               <IconSettings />
             </ActionIcon>
-            <Text size="sm">YouTube N窓ツール</Text>
+            <Text size="sm">YouTube N窓ツール (PC推奨)</Text>
           </Group>
         </Box>
       </AppShell.Header>
