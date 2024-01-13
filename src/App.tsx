@@ -1,4 +1,4 @@
-import { ActionIcon, AppShell, Box, Text } from "@mantine/core";
+import { ActionIcon, AppShell, Box, Text, Group } from "@mantine/core";
 import YouTube from "react-youtube";
 import { IconSettings } from "@tabler/icons-react";
 import { ConfigModal } from "./components/features/Config";
@@ -10,33 +10,38 @@ function App() {
   // const { ref, width, height } = useElementSize();
 
   const [opened, { close, open }] = useDisclosure();
-  const { vid } = useAppState();
+  const { urls } = useAppState();
 
   const gridTemplateColumns = useMemo(() => {
-    if (vid.length < 2) return "1fr";
-    if (vid.length < 5) return "1fr 1fr";
-    if (vid.length < 10) return "1fr 1fr 1fr";
+    if (urls.length < 2) return "1fr";
+    if (urls.length < 5) return "1fr 1fr";
+    if (urls.length < 10) return "1fr 1fr 1fr";
     else "1fr 1fr 1fr 1fr";
-  }, [vid]);
+  }, [urls]);
 
   return (
     <AppShell header={{ height: 60 }}>
       <AppShell.Header>
-        <ActionIcon onClick={open}>
-          <IconSettings />
-        </ActionIcon>
-        <Text size="sm">YouTube複窓ツール</Text>
+        <Box p="sm">
+          <Group>
+            <ActionIcon onClick={open}>
+              <IconSettings />
+            </ActionIcon>
+            <Text size="sm">YouTube複窓ツール</Text>
+          </Group>
+        </Box>
       </AppShell.Header>
       <AppShell.Main>
         <Box
           h="calc(100vh - var(--app-shell-header-height, 0px) - var(--app-shell-footer-height, 0px))"
           style={{ display: "grid", gridTemplateColumns: gridTemplateColumns }}
         >
-          {vid.map((videoId, index) => {
+          {urls.map((url, index) => {
+            const vid = url.split("watch?v=")[1].split("&s=")[0];
             return (
               <YouTube
                 key={index}
-                videoId={videoId}
+                videoId={vid}
                 opts={{
                   playsinline: 1,
                   autoplay: 0,

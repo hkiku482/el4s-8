@@ -4,7 +4,7 @@ import { ChangeEvent, useCallback, useState } from "react";
 import { useAppState } from "../AppStateContext";
 
 export const AppendId = () => {
-  const { vid, setVid } = useAppState();
+  const { urls, setUrls } = useAppState();
 
   const [id, setId] = useState("");
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -16,9 +16,12 @@ export const AppendId = () => {
     if (id.trim() === "") {
       return;
     }
+    if (id.indexOf("watch?v=") === -1) {
+      return;
+    }
     setId("");
-    setVid && setVid(vid.concat([id]));
-  }, [id, setVid, vid]);
+    setUrls && setUrls(urls.concat([id]));
+  }, [id, setUrls, urls]);
 
   return (
     <Box>
