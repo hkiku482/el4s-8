@@ -18,13 +18,14 @@ export const ConfigModal = ({ opened, onClose }: Props) => {
             URLを入力してください。(例)https://www.youtube.com/watch?v=F1-vfcG8ubs
           </Text>
           <Stack gap={4}>
-            {urls.map((videoId, index) => {
+            {urls.map((data, index) => {
               const c = () => {
-                const f = urls.slice(0, index - 1);
-                const s = urls.slice(index + 1, urls.length);
-                setUrls && setUrls(f.concat(s));
+                const newUrls = urls.filter((d) => {
+                  return d.id !== data.id;
+                });
+                setUrls && setUrls(newUrls);
               };
-              return <IdLine key={index} urls={videoId} onClose={c} />;
+              return <IdLine key={index} urls={data.id} onClose={c} />;
             })}
             <AppendId />
           </Stack>

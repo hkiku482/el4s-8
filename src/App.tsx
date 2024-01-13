@@ -27,7 +27,7 @@ function App() {
             <ActionIcon onClick={open}>
               <IconSettings />
             </ActionIcon>
-            <Text size="sm">YouTube複窓ツール</Text>
+            <Text size="sm">YouTube N窓ツール</Text>
           </Group>
         </Box>
       </AppShell.Header>
@@ -36,11 +36,11 @@ function App() {
           h="calc(100vh - var(--app-shell-header-height, 0px) - var(--app-shell-footer-height, 0px))"
           style={{ display: "grid", gridTemplateColumns: gridTemplateColumns }}
         >
-          {urls.map((url, index) => {
-            const vid = url.split("watch?v=")[1].split("&s=")[0];
+          {urls.map((data) => {
+            const vid = data.url.split("watch?v=")[1].split("&s=")[0];
             return (
               <YouTube
-                key={index}
+                key={data.id}
                 videoId={vid}
                 opts={{
                   playsinline: 1,

@@ -5,7 +5,6 @@ type Props = {
   onClose: () => void;
 };
 export const IdLine = ({ urls, onClose }: Props) => {
-  // TODO: 既存のvidの編集
   return (
     <Box>
       <Input
