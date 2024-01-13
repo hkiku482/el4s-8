@@ -16,6 +16,7 @@ export const AppendId = () => {
     if (id.trim() === "") {
       return;
     }
+    setId("");
     setVid && setVid(vid.concat([id]));
   }, [id, setVid, vid]);
 
