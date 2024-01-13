@@ -8,24 +8,23 @@ type Props = {
   onClose: () => void;
 };
 export const ConfigModal = ({ opened, onClose }: Props) => {
-  const { vid, setVid } = useAppState();
+  const { urls, setUrls } = useAppState();
 
   return (
     <>
       <Modal opened={opened} onClose={onClose} title="窓追加" centered>
         <ModalBody>
           <Text size="sm" c={"gray"} mb={4}>
-            video idを入力してください。
-            "https://www.youtube.com/watch?v=F1-vfcG8ubs"の場合"F1-vfcG8ubs"の部分です。
+            URLを入力してください。(例)https://www.youtube.com/watch?v=F1-vfcG8ubs
           </Text>
           <Stack gap={4}>
-            {vid.map((videoId, index) => {
+            {urls.map((videoId, index) => {
               const c = () => {
-                const f = vid.slice(0, index - 1);
-                const s = vid.slice(index + 1, vid.length);
-                setVid && setVid(f.concat(s));
+                const f = urls.slice(0, index - 1);
+                const s = urls.slice(index + 1, urls.length);
+                setUrls && setUrls(f.concat(s));
               };
-              return <IdLine key={index} vid={videoId} onClose={c} />;
+              return <IdLine key={index} urls={videoId} onClose={c} />;
             })}
             <AppendId />
           </Stack>
