@@ -14,7 +14,7 @@ export const AppendId = () => {
   }, []);
 
   const handleSubmit = useCallback(() => {
-    if (16 < urls.length) {
+    if (16 <= urls.length) {
       return;
     }
     if (url.trim() === "") {
