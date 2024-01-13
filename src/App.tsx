@@ -37,13 +37,14 @@ function App() {
           style={{ display: "grid", gridTemplateColumns: gridTemplateColumns }}
         >
           {urls.map((data) => {
-            const vid = data.url.split("watch?v=")[1].split("&s=")[0];
+            const vid = data.url.split("watch?v=")[1].split("&")[0];
             return (
               <YouTube
                 key={data.id}
                 videoId={vid}
                 opts={{
                   playerVars: {
+                    playlist: `${vid}`,
                     playsinline: 1,
                     autoplay: 1,
                     mute: 1,
